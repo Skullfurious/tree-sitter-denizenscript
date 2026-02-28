@@ -1,6 +1,7 @@
 // Copied from https://github.com/tree-sitter/tree-sitter-python/blob/master/src/scanner.c
 // Used under the MIT License.
 // Implemented further in ./grammar.js
+// For further information outside this repository examine this link: https://github.com/tree-sitter/tree-sitter-python/blob/master/grammar.js
 
 #include "tree_sitter/array.h"
 #include "tree_sitter/parser.h"
