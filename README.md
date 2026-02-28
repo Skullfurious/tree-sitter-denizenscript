@@ -23,6 +23,7 @@ Note that in the future grammar may be broken up into a subdirectory named `./gr
 * Tree Sitter Discord Commmunity: https://discord.gg/w7nTvsVJhm
 * Denizen Project: https://github.com/DenizenScript/Denizen
 * Denizen Discord Commmunity: https://discord.gg/Q6pZGSR
+* tree-sitter-python: https://github.com/tree-sitter/tree-sitter-python
 
 ### License
 Uses the MIT license.
