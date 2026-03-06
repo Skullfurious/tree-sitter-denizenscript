@@ -9,6 +9,12 @@
 
 export default grammar({
   name: "denizenscript",
+  
+  extras: $ => [
+      $._comment,
+      /[\s\f\uFEFF\u2060\u200B]/, // Standard whitespace (tabs/spaces)
+    ],
+  
   // Copied from https://github.com/tree-sitter/tree-sitter-python/blob/master/grammar.js implements their scanner.c file.
   externals: $ => [
     $._newline,
@@ -19,13 +25,6 @@ export default grammar({
     $.escape_interpolation,
     $.string_end,
 
-    // Mark comments as external tokens so that the external scanner is always
-    // invoked, even if no external token is expected. This allows for better
-    // error recovery, because the external scanner can maintain the overall
-    // structure by returning dedent tokens whenever a dedent occurs, even
-    // if no dedent is expected.
-    $.comment,
-
     // Allow the external scanner to check for the validity of closing brackets
     // so that it can avoid returning dedent tokens between brackets.
     ']',
@@ -33,8 +32,36 @@ export default grammar({
     '}',
     'except',
   ],
+
   rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => "hello"
+    source_file: $ => repeat($._definition),
+    
+    _definition: $ => choice(
+      $.script_block,
+    ),
+    
+    script_block: $ => seq(
+      $.script_name,
+      $._indent,
+      repeat1($.key_value),
+      $._dedent,
+    ),
+    
+    _identifier: $ => /[a-zA-Z0-9_]+/,
+    
+    key_value: $ => seq(
+      $._identifier,
+      ':',
+      $._identifier,
+      $._newline,
+    ),
+    
+    script_name: $ => seq(
+      $._identifier,
+      ':',
+      $._newline
+    ),
+    
+    _comment: $ => token(seq('#', /.*/))
   }
 });
