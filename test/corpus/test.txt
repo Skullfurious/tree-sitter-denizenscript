@@ -5,12 +5,43 @@ Simple Test
 MyScript:
   debug: true
   type: world
+
 --------------------------------------------------------------------------------
 (source_file
-  (comment)
-  (script_block
+    (comment)
+    (script_container_block
     (script_name)
-    (key_value)
-    (key_value)
-  )
-)
+    (key_value_block
+        (key_component)
+        (value_component))
+    (key_value_block
+        (key_component)
+        (value_component))))
+================================================================================
+Map Block Test
+================================================================================
+MyScript:
+    debug: true
+    type: world
+    tab_completions:
+        1: alpha
+        2: beta
+
+--------------------------------------------------------------------------------
+(source_file
+  (script_container_block
+    (script_name)
+    (key_value_block
+      (key_component)
+      (value_component))
+    (key_value_block
+      (key_component)
+      (value_component))
+    (key_map_block
+      (key_component)
+      (key_value_block
+        (key_component)
+        (value_component))
+      (key_value_block
+        (key_component)
+        (value_component)))))

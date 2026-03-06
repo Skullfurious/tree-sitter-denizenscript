@@ -1,11 +1,16 @@
 [
   {
-    "type": "key_value",
+    "type": "command_body",
     "named": true,
     "fields": {}
   },
   {
-    "type": "script_block",
+    "type": "key_component",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "key_list_block",
     "named": true,
     "fields": {},
     "children": {
@@ -13,7 +18,87 @@
       "required": true,
       "types": [
         {
-          "type": "key_value",
+          "type": "key_component",
+          "named": true
+        },
+        {
+          "type": "list_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "key_map_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "key_component",
+          "named": true
+        },
+        {
+          "type": "key_value_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "key_value_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "key_component",
+          "named": true
+        },
+        {
+          "type": "value_component",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "command_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "script_container_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "key_list_block",
+          "named": true
+        },
+        {
+          "type": "key_map_block",
+          "named": true
+        },
+        {
+          "type": "key_value_block",
           "named": true
         },
         {
@@ -38,11 +123,20 @@
       "required": false,
       "types": [
         {
-          "type": "script_block",
+          "type": "script_container_block",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "value_component",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "-",
+    "named": false
   },
   {
     "type": ":",
