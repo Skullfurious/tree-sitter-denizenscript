@@ -11,7 +11,7 @@ export default grammar({
   name: "denizenscript",
   
   extras: $ => [
-      $._comment,
+      $.comment,
       /[\s\f\uFEFF\u2060\u200B]/, // Standard whitespace (tabs/spaces)
     ],
   
@@ -62,6 +62,6 @@ export default grammar({
       $._newline
     ),
     
-    _comment: $ => token(seq('#', /.*/))
+    comment: $ => token(seq('#', /.*/))
   }
 });
